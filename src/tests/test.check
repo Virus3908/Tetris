@@ -1,0 +1,80 @@
+//test
+#include "header.h"
+#include <check.h>
+#test test1
+    game_t *game = s21_get_game();
+    for(int i = 0; i < 2; i++){
+        game->game_state = 1;
+        while (game->game_state){
+            game->game_state = s21_game_state(Down);
+        }
+    }
+    ck_assert_int_eq(1, 1);
+
+#test test2
+    game_t *game = s21_get_game();
+    game->game_state = 1;
+    while (game->game_state){
+        game->game_state = s21_game_state(Down);
+    }
+    s21_move_field_down(3);
+
+#test test3
+    game_t *game = s21_get_game();
+    game->game_state = 1;
+    s21_game_state(Pause);
+    s21_game_state(Pause);
+
+#test test4
+    game_t *game = s21_get_game();
+    game->game_state = 1;
+    while (game->game_state){
+        game->game_state = s21_game_state(Left);
+        game->game_state = s21_game_state(Down);
+    }
+
+#test test5
+    game_t *game = s21_get_game();
+    game->game_state = 1;
+    while (game->game_state){
+        game->game_state = s21_game_state(Right);
+        game->game_state = s21_game_state(Down);
+    }
+
+#test test6
+    game_t *game = s21_get_game();
+    game->game_state = 1;
+    while (game->game_state){
+        game->game_state = s21_game_state(Action);
+        game->game_state = s21_game_state(Down);
+    }
+
+#test test7
+    game_t *game = s21_get_game();
+    game->game_state = 1;
+    while (game->game_state){
+        game->game_state = s21_game_state(Action);
+        game->game_state = s21_game_state(Down);
+    }
+    updateCurrentState();
+
+
+#test test8
+    game_t *game = s21_get_game();
+    game->game_state = 0;
+    game->game_state = s21_game_state(Start);
+
+#test test9
+    game_t *game = s21_get_game();
+    game->game_state = 1;
+    game->game_state = s21_game_state(Start);
+
+#test test10
+    game_t *game = s21_get_game();
+    game->game_state = 0;
+    game->game_state = s21_game_state(Terminate);
+
+#test test11
+    game_t *game = s21_get_game();
+    game->game_state = 1;
+    game->game_state = s21_game_state(Terminate);
